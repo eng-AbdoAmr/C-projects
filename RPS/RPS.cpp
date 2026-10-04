@@ -4,6 +4,14 @@
 
 using namespace std;
 
+//#define CHOICE_ROCK        0
+//#define CHOICE_PAPER       1
+//#define CHOICE_SCICCORS    2
+
+enum CHOICES
+{
+    ROCK , PAPER , SCICCORS
+};
 
 // Get a valid choice from the player
 char getPlayerChoice()
@@ -32,7 +40,22 @@ char getComputerChoice()
     int randomChoice = rand() % 3;
 
     if (randomChoice == 0)
+        //return  CHOICE_ROCK;
         return 'r';
+    else if (randomChoice == 1)
+        return 'p';
+    else
+        return 's';
+}
+
+// Generate the computer's choice
+char getComputerChoice()
+{
+    int randomChoice = rand() % 3;
+
+    if (randomChoice == 0)
+    //return  CHOICE_ROCK;
+        return 'r'; 
     else if (randomChoice == 1)
         return 'p';
     else

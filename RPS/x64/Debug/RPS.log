@@ -1,3 +1,7 @@
 ﻿  RPS.cpp
-C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(96,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  RPS.vcxproj -> C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\x64\Debug\RPS.exe
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(52,6): error C2084: function 'char getComputerChoice(void)' already has a body
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(38): message : see previous definition of 'getComputerChoice'
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(119,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(142,25): error C2065: 'getComputerChoice': undeclared identifier
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(142,44): error C2440: 'initializing': cannot convert from 'char (__cdecl *)(void)' to 'char'
+C:\Users\abdoo\Desktop\CPP\cs\projects\RPS\RPS\RPS\RPS.cpp(142,23): message : There is no context in which this conversion is possible
