@@ -275,21 +275,33 @@ int minimax(char board[3][3], bool isComputerTurn, int depth)
         {
             for (int j = 0; j < 3; j++)
             {
+                // Find empty position
                 if (board[i][j] == ' ')
                 {
+                    // Try computer move
                     board[i][j] = 'O';
-
+                    
+                    // Simulate player's response
                     int score = minimax(board, false, depth + 1);
-
+                    
+                    // Undo move
                     board[i][j] = ' ';
-
+                    
+                    // Keep highest score
                     bestScore = max(bestScore, score);
+
                 }
             }
         }
 
         return bestScore;
     }
+    
+    // --------------------------------------------------------
+    // PLAYER TURN
+    // Minimize score
+    // --------------------------------------------------------
+    
     else
     {
         int bestScore = 1000;
@@ -298,15 +310,23 @@ int minimax(char board[3][3], bool isComputerTurn, int depth)
         {
             for (int j = 0; j < 3; j++)
             {
+                
+                // Find empty position
                 if (board[i][j] == ' ')
                 {
+                    
+                    // Try player's move
                     board[i][j] = 'X';
 
+                    // Simulate computer response
                     int score = minimax(board, true, depth + 1);
 
+                    // Undo move
                     board[i][j] = ' ';
 
+                    // Keep lowest score
                     bestScore = min(bestScore, score);
+                
                 }
             }
         }
