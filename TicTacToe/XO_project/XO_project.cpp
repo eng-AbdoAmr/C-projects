@@ -247,18 +247,18 @@ void easyComputerMove(char board[3][3])
 // ============================================================
 
 // Calculate the best possible score from a board position
-int minimax(char board[3][3], bool isComputerTurn)
+int minimax(char board[3][3], bool isComputerTurn, int depth)
 {
     // Computer wins
     if (checkWinner(board, 'O'))
     {
-        return 10;
+        return 10 - depth;
     }
 
     // Player wins
     if (checkWinner(board, 'X'))
     {
-        return -10;
+        return depth - 10;
     }
 
     // Draw
@@ -266,12 +266,6 @@ int minimax(char board[3][3], bool isComputerTurn)
     {
         return 0;
     }
-
-
-    // --------------------------------------------------------
-    // COMPUTER TURN
-    // Maximize score
-    // --------------------------------------------------------
 
     if (isComputerTurn)
     {
@@ -281,19 +275,14 @@ int minimax(char board[3][3], bool isComputerTurn)
         {
             for (int j = 0; j < 3; j++)
             {
-                // Find empty position
                 if (board[i][j] == ' ')
                 {
-                    // Try computer move
                     board[i][j] = 'O';
 
-                    // Simulate player's response
-                    int score = minimax(board, false);
+                    int score = minimax(board, false, depth + 1);
 
-                    // Undo move
                     board[i][j] = ' ';
 
-                    // Keep highest score
                     bestScore = max(bestScore, score);
                 }
             }
@@ -301,13 +290,6 @@ int minimax(char board[3][3], bool isComputerTurn)
 
         return bestScore;
     }
-
-
-    // --------------------------------------------------------
-    // PLAYER TURN
-    // Minimize score
-    // --------------------------------------------------------
-
     else
     {
         int bestScore = 1000;
@@ -316,19 +298,14 @@ int minimax(char board[3][3], bool isComputerTurn)
         {
             for (int j = 0; j < 3; j++)
             {
-                // Find empty position
                 if (board[i][j] == ' ')
                 {
-                    // Try player's move
                     board[i][j] = 'X';
 
-                    // Simulate computer response
-                    int score = minimax(board, true);
+                    int score = minimax(board, true, depth + 1);
 
-                    // Undo move
                     board[i][j] = ' ';
 
-                    // Keep lowest score
                     bestScore = min(bestScore, score);
                 }
             }
@@ -337,7 +314,6 @@ int minimax(char board[3][3], bool isComputerTurn)
         return bestScore;
     }
 }
-
 
 
 // ============================================================
@@ -366,7 +342,12 @@ void hardComputerMove(char board[3][3])
                 board[i][j] = 'O';
 
                 // Calculate result of this move
-                int score = minimax(board, false);
+                int score = minimax(board, false, 0);
+                
+                /*cout << "Testing position "
+                    << i * 3 + j + 1
+                    << " -> score: "
+                    << score << endl;*/
 
                 // Undo temporary move
                 board[i][j] = ' ';
